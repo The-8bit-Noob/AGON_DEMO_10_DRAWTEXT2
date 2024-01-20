@@ -6,4 +6,6 @@ I used a 16x64 pixel grid to create my letters then did all draw and move comman
 Then added the scaling.<br>
 
 A HUGE THANKS TO MILTONW <br>
-for the code, It's all his work.
+for the code, It's all his work.<br>
+
+And Luis From Learn Agon for his Ferrari code.
