@@ -1,6 +1,6 @@
    10 REM ******************************
    20 REM *        AGON LIGHT 2        *
-   30 REM *      BBC BASIC MODE 8      *
+   30 REM *      BBC BASIC MODE 0      *
    40 REM *         320 X 240          *
    50 REM *     DRAW LUIS FERRARI      *
    60 REM *                            *
@@ -8,7 +8,7 @@
    80 REM *  A HUGE THANKS TO MILTONW  *
    90 REM ******************************
    95 :
-  100 VDU 22,8            : REM SET SCREEN MODE.
+  100 VDU 22,0            : REM SET SCREEN MODE.
   110 VDU 23,1,0          : REM DISABLE CURSOR.
   120 VDU 12              : REM SAME AS CLS (clear text from screen).
   130 VDU 16              : REM SAME AS CLG (clear graphics from screen).
