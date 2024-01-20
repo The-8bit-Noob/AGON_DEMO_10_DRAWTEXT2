@@ -2,7 +2,7 @@
    20 REM *        AGON LIGHT 2        *
    30 REM *      BBC BASIC MODE 8      *
    40 REM *            DEMO            *
-   50 REM *         320 X 240          *
+   50 REM *         640 X 480          *
    60 REM *          DRAWING           *
    70 REM *          FERRARI           *
    80 REM *      BY STEVE LOVEJOY      *
