@@ -8,38 +8,38 @@
    80 REM *  FOR THE CODE IT's All HIS *
    90 REM ******************************
    95 :
-  100 VDU 22,8          : REM SET SCREEN MODE.
-  110 VDU 23,1,0        : REM DISABLE CURSOR.
-  120 VDU 12            : REM SAME AS CLS (clear text from screen).
-  130 VDU 16            : REM SAME AS CLG (clear graphics from screen).
-  140 VDU 18,0,10       : REM SAME AS GCOL (set colour of graphics).
-  150 SW% = 1280        : REM SCREEN WIDTH IN GRAPHICAL UNITS.
-  160 SH%=1024          : REM SCREEN HEIGHT IN GRAPHICAL UNITS.
-  170 SC=10.0           : REM ASSIGN FLOAT FOR SCALE.
-  180 AX%=SW%/2-(32*SC) : REM X START COORDS (center of screen).
-  190 AY%=SH%/2-(8*SC)  : REM Y START COORDS (center of screen).
+  100 VDU 22,8            : REM SET SCREEN MODE.
+  110 VDU 23,1,0          : REM DISABLE CURSOR.
+  120 VDU 12              : REM SAME AS CLS (clear text from screen).
+  130 VDU 16              : REM SAME AS CLG (clear graphics from screen).
+  140 VDU 18,0,10          : REM SAME AS GCOL (set colour of graphics).
+  150 SW% = 1280          : REM SCREEN WIDTH IN GRAPHICAL UNITS.
+  160 SH% = 1024          : REM SCREEN HEIGHT IN GRAPHICAL UNITS.
+  170 SC = 7.0            : REM ASSIGN FLOAT FOR SCALE (PLAY WITH THIS #).
+  180 DX% = SW%/2-(32*SC) : REM DEFAULT X START COORDS (center of screen -400).
+  190 DY% = SH%/2-(8*SC)  : REM DEFAULT Y START COORDS (center of screen -50).
   200 :
-  210 PROC_DRAW         : REM CALL THE DRAW PROCESS.
+  210 PROC_DRAW           : REM CALL THE DRAW PROCESS.
   220 :
-  230 END               : REM **** END OF PROGRAM ****
+  230 END                 : REM **** END OF PROGRAM ****
   240 :
- 1000 REM **** DRAW AGON ****.
- 1010 DEF PROC_DRAW     : REM DRAW PROCESS.
- 1020 DIM XY% (1024)    : REM JUST A BIG ENOUGH NUMBER TO HOLD DATA ALL.
+ 1000 REM **** DRAW AGON ****
+ 1010 DEF PROC_DRAW       : REM DRAW PROCESS.
+ 1020 DIM XY% (1024)      : REM ARRY BIG ENOUGH NUMBER TO HOLD ALL DATA.
  1030 :
- 1040 REPEAT            : REM LOOP
+ 1040 REPEAT              : REM START OF LOOP.
  1050     READ X%,Y%            : REM GET DATA FOR X & Y.
- 1060     IF X% >= 0 GOTO 1140  : REM IF X% IS 0 or POSITIVE DRAW.
+ 1060     IF X% >= 0 GOTO 1140  : REM IF X% IS 0 OR ABOVE DRAW.
  1070         REM SPECIAL VALUES, EITHER MOVE OR END.
  1080         IF X% = -12345 GOTO 1150                : REM IF X IS END MARKER.
  1090           X% = ABS(X%)                          : REM IF X IS A MINUS # MOVE (NOT DRAW), ABS CONVERTS TO POSITIVE #.
  1100           Y% = ABS(Y%)                          : REM IF X IS A MINUS # MOVE (NOT DRAW), ABS CONVERTS TO POSITIVE #.
- 1110           MOVE AX% + (X% * SC), AY% + (Y% * SC) : REM **** MOVE ****
+ 1110           MOVE DX% + (X% * SC), DY% + (Y% * SC) : REM **** MOVE ****
  1120           GOTO 1150
  1130     REM ELSE
- 1140           DRAW AX% + (X% * SC), AY% + (Y% * SC) : REM **** DRAW ****
+ 1140           DRAW DX% + (X% * SC), DY% + (Y% * SC) : REM **** DRAW ****
  1150     REM ENDIF
- 1160 UNTIL X% = -12345 AND Y% = -12345               : REM LOOP UNTIL END MARKERS.
+ 1160 UNTIL X% = -12345 AND Y% = -12345               : REM LOOP UNTIL END MARKERS ARE READ.
  1170 :
  1180 ENDPROC                                         : REM END DRAW PROCESS.
  1200 :
